@@ -2,6 +2,34 @@
   {{visible?'Ocultar':'Mostrar'}}
 </button>
 
+@if (visible) {
+<h2>{{title}}</h2>
+
+@if (users != undefined && users.length > 0) {
+
+<table>
+  <thead>
+    <tr>
+      <td>Id</td>
+      <td>Name</td>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of users; track $index) {
+    <tr>
+      <td>{{$index+1}} </td>
+      <td>{{item}} </td>
+    </tr>
+    }
+  </tbody> 
+</table>
+}
+}@else {
+<p>Lo sentimos, no está disponible la página</p>
+}
+
+<app-counter [title]="subtitle"></app-counter>
+<!--
 <div *ngIf="visible; else notEnable">
   <h2>{{title}}</h2>
 
@@ -32,3 +60,5 @@
 <ng-template #notEnable>
   <h2>Lo sentimos, no está disponible la página</h2>
 </ng-template>
+
+-->

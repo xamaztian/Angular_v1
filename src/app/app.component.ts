@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { NgFor } from '@angular/common';
-import { NgIf } from '@angular/common';
+import { CounterComponent } from './counter/counter.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NgFor, NgIf],
+  imports: [RouterOutlet, CommonModule, CounterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title: string = 'Hola Mundial Angular! desde componente';
+
+  subtitle: string = 'Contador con estado de sesión que viene desde componente padre';
 
   users: string[] = ['Juan', 'María', 'Luis', 'Pepe'];
 
