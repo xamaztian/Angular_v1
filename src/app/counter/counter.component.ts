@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,6 +11,7 @@ export class CounterComponent implements OnInit {
   counter: number = 0;
 
   @Input() title!: string;
+  @Output() counterEmmit: EventEmitter<number> = new EventEmitter();
 
   ngOnInit(): void {
 
@@ -20,7 +21,7 @@ export class CounterComponent implements OnInit {
 
   setCounter(): void {
     this.counter++;
-
     sessionStorage.setItem('counter', this.counter.toString());
+    this.counterEmmit.emit(parseInt(sessionStorage.getItem('counter')));
   }
 }
